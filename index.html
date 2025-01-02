@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AhnunciaAi - O marketplace inteligente para seus anúncios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .float { animation: float 3s ease-in-out infinite; }
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: bold;
+            color: #262626
+        }
+        .typing-effect::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .image-zoom {
+            overflow: hidden;
+        }
+        .image-zoom img {
+            transition: transform 0.3s ease;
+        }
+        .image-zoom:hover img {
+            transform: scale(1.1);
+        }
+
+
+        .hero-bg {
+    position: relative;
+    background-image: url('https://images.unsplash.com/photo-1556745757-8d76bdb6984b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8); /* Preto com 80% de opacidade */
+    z-index: 1; /* Garante que a camada de opacidade fique acima da imagem */
+}
+
+.hero-bg > * {
+    position: relative;
+    z-index: 2; /* Garante que o conteúdo dentro do elemento fique acima da camada preta */
+}
+
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="header">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold gradient-text">AhnunciaAi 🚀 </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Home</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Categorias</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Como Funciona</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Planos</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Blog</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Login</a>
+                <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">Anuncie Agora</a>
+            </div>
+            <button id="mobileMenuButton" class="md:hidden text-gray-600">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        <div id="mobileMenu" class="hidden md:hidden bg-white p-4 shadow-md">
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300">Home</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300">Categorias</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300">Como Funciona</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300">Planos</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300">Blog</a>
+        </div>
+    </header>
+
+    <!-- Hero Section with Search -->
+    <section class="pt-60 pb-32 hero-bg text-white h-full">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-3xl mx-auto text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">Encontre ou Anuncie o que Procura no AhnunciaAi 🚀</h1>
+                <p class="text-xl mb-8">O marketplace inteligente que conecta vendedores a milhões de compradores em potencial. 🤝</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-xl p-6 max-w-4xl mx-auto">
+                <form class="flex flex-wrap -mx-2">
+                    <div class="w-full md:w-1/3 px-2 mb-4 md:mb-0">
+                        <div class="relative">
+                            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <input type="text" id="searchInput" placeholder="O que você procura?" class="w-full pl-10 pr-4 py-3 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/3 px-2 mb-4 md:mb-0">
+                        <div class="relative">
+                            <i class="fas fa-tag absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <select class="w-full pl-10 pr-4 py-3 rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none">
+                                <option value="">Todas as categorias</option>
+                                <option value="eletronicos">📱 Eletrônicos</option>
+                                <option value="moda">👕 Moda</option>
+                                <option value="casa">🏠 Casa e Decoração</option>
+                                <option value="veiculos">🚗 Veículos</option>
+                                <option value="esportes">⚽ Esportes</option>
+                            </select>
+                            <i class="fas fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/3 px-2">
+                        <button type="submit" class="w-full bg-blue-600 text-white px-4 py-3 rounded-md hover:bg-blue-700 transition duration-300 transform hover:-translate-y-1 hover:shadow-lg">
+                            <i class="fas fa-search mr-2"></i> Buscar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Categorias em Destaque -->
+    <section class="py-16 bg-white z-">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Explore Nossas Categorias 🔍</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <a href="#" class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 text-center group card-hover-effect">
+                    <i class="fas fa-laptop text-4xl text-blue-600 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <p class="font-semibold">Eletrônicos</p>
+                    <p class="text-sm text-gray-600 mt-2">20.000+ anúncios</p>
+                </a>
+                <a href="#" class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 text-center group card-hover-effect">
+                    <i class="fas fa-tshirt text-4xl text-blue-600 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <p class="font-semibold">Moda</p>
+                    <p class="text-sm text-gray-600 mt-2">15.000+ anúncios</p>
+                </a>
+                <a href="#" class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 text-center group card-hover-effect">
+                    <i class="fas fa-couch text-4xl text-blue-600 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <p class="font-semibold">Casa e Decoração</p>
+                    <p class="text-sm text-gray-600 mt-2">10.000+ anúncios</p>
+                </a>
+                <a href="#" class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 text-center group card-hover-effect">
+                    <i class="fas fa-car text-4xl text-blue-600 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <p class="font-semibold">Veículos</p>
+                    <p class="text-sm text-gray-600 mt-2">8.000+ anúncios</p>
+                </a>
+                <a href="#" class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 text-center group card-hover-effect">
+                    <i class="fas fa-dumbbell text-4xl text-blue-600 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <p class="font-semibold">Esportes</p>
+                    <p class="text-sm text-gray-600 mt-2">5.000+ anúncios</p>
+                </a>
+                <a href="#" class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 text-center group card-hover-effect">
+                    <i class="fas fa-briefcase text-4xl text-blue-600 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <p class="font-semibold">Empregos</p>
+                    <p class="text-sm text-gray-600 mt-2">12.000+ anúncios</p>
+                </a>
+            </div>
+            <div class="text-center mt-8">
+                <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold inline-flex items-center transition duration-300 transform hover:translate-x-2">
+                    Ver todas as categorias 
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Anúncios em Destaque (Planos Pagos) -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">Anúncios em Destaque 🌟</h2>
+            <p class="text-center text-gray-600 mb-12">Os melhores produtos de nossos anunciantes premium</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 card-hover-effect">
+                    <div class="relative image-zoom">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Fones de Ouvido" class="w-full h-48 object-cover">
+                        <span class="absolute top-2 left-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">Destaque</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Fones de Ouvido Bluetooth</h3>
+                        <p class="text-gray-600 mb-4">Som imersivo e conforto o dia todo. 🎵</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-blue-600">R$ 199,99</span>
+                            <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold transition duration-300">Ver Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 card-hover-effect">
+                    <div class="relative image-zoom">
+                        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Relógio Inteligente" class="w-full h-48 object-cover">
+                        <span class="absolute top-2 left-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">Destaque</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Relógio Inteligente</h3>
+                        <p class="text-gray-600 mb-4">Monitore sua saúde e fique conectado. ⌚️</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-blue-600">R$ 399,99</span>
+                            <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold transition duration-300">Ver Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 card-hover-effect">
+                    <div class="relative image-zoom">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tênis Esportivo" class="w-full h-48 object-cover">
+                        <span class="absolute top-2 left-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">Destaque</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Tênis Esportivo Premium</h3>
+                        <p class="text-gray-600 mb-4">Desempenho e estilo em um só produto. 👟</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-blue-600">R$ 499,99</span>
+                            <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold transition duration-300">Ver Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 card-hover-effect">
+                    <div class="relative image-zoom">
+                        <img src="https://images.unsplash.com/photo-1504274066651-8d31a536b11a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Câmera DSLR" class="w-full h-48 object-cover">
+                        <span class="absolute top-2 left-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">Destaque</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Câmera DSLR Profissional</h3>
+                        <p class="text-gray-600 mb-4">Capture momentos com qualidade excepcional. 📸</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-blue-600">R$ 3.999,99</span>
+                            <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold transition duration-300">Ver Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Anúncios Recentes -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">Anúncios Recentes 🆕</h2>
+            <p class="text-center text-gray-600 mb-12">Confira as últimas novidades em nossa plataforma</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Anúncio 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Notebook" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Notebook Dell XPS</h3>
+                        <p class="text-gray-600 text-sm mb-2">Processador i7, 16GB RAM, 512GB SSD</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">R$ 5.999,99</span>
+                            <span class="text-sm text-gray-500">Há 2 horas</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Anúncio 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1399&q=80" alt="Smartwatch" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Smartwatch Galaxy Watch</h3>
+                        <p class="text-gray-600 text-sm mb-2">Monitor cardíaco, GPS, 4G</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">R$ 1.799,99</span>
+                            <span class="text-sm text-gray-500">Há 3 horas</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Anúncio 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1412&q=80" alt="Tênis" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Tênis Nike Air Max</h3>
+                        <p class="text-gray-600 text-sm mb-2">Tamanho 42, Preto e Branco</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">R$ 599,99</span>
+                            <span class="text-sm text-gray-500">Há 5 horas</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Anúncio 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Bicicleta" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Bicicleta Mountain Bike</h3>
+                        <p class="text-gray-600 text-sm mb-2">Aro 29, 21 marchas, Suspensão</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">R$ 1.299,99</span>
+                            <span class="text-sm text-gray-500">Há 6 horas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition duration-300 inline-flex items-center">
+                    <i class="fas fa-list mr-2"></i> Ver Todos os Anúncios
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Listagem de Anúncios Expandida -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">Explore Mais Anúncios 🔍</h2>
+            <p class="text-center text-gray-600 mb-12">Encontre exatamente o que você procura</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Anúncio 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Fones de Ouvido" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Fones de Ouvido Bluetooth</h3>
+                        <p class="text-gray-600 text-sm mb-2">Cancelamento de ruído, 20h bateria</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">R$ 299,99</span>
+                            <span class="text-sm text-gray-500">Há 1 dia</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Anúncio 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Relógio Inteligente" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Relógio Inteligente Fitness</h3>
+                        <p class="text-gray-600 text-sm mb-2">Monitor cardíaco, GPS, à prova d'água</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">R$ 499,99</span>
+                            <span class="text-sm text-gray-500">Há 2 dias</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Anúncio 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tênis Esportivo" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Tênis Esportivo Premium</h3>
+                        <p class="text-gray-600 text-sm mb-2">Amortecimento avançado, respirável</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">R$ 399,99</span>
+                            <span class="text-sm text-gray-500">Há 3 dias</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Anúncio 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1504274066651-8d31a536b11a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Câmera DSLR" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Câmera DSLR Profissional</h3>
+                        <p class="text-gray-600 text-sm mb-2">24MP, 4K vídeo, Wi-Fi</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">R$ 3.999,99</span>
+                            <span class="text-sm text-gray-500">Há 4 dias</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Anúncio 5 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1585399000684-d2f72660f092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Smartphone" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Smartphone 5G</h3>
+                        <p class="text-gray-600 text-sm mb-2">6.7" AMOLED, 128GB, 5000mAh</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">R$ 2.499,99</span>
+                            <span class="text-sm text-gray-500">Há 5 dias</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Anúncio 6 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1501&q=80" alt="Laptop Gaming" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Laptop Gaming</h3>
+                        <p class="text-gray-600 text-sm mb-2">RTX 3070, 16GB RAM, 1TB SSD</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">R$ 7.999,99</span>
+                            <span class="text-sm text-gray-500">Há 6 dias</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Anúncio 7 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1608156639585-b3a032ef9689?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1498&q=80" alt="Drone" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Drone com Câmera 4K</h3>
+                        <p class="text-gray-600 text-sm mb-2">30min voo, GPS, Follow Me</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">R$ 3.499,99</span>
+                            <span class="text-sm text-gray-500">Há 1 semana</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Anúncio 8 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1464&q=80" alt="Smart TV" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Smart TV 4K 55"</h3>
+                        <p class="text-gray-600 text-sm mb-2">HDR, Android TV, Bluetooth</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">R$ 2.799,99</span>
+                            <span class="text-sm text-gray-500">Há 1 semana</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Anúncio 9 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1464&q=80" alt="Tênis Corrida" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Tênis de Corrida</h3>
+                        <p class="text-gray-600 text-sm mb-2">Leve, respirável, amortecimento</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">R$ 349,99</span>
+                            <span class="text-sm text-gray-500">Há 8 dias</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Anúncio 10 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1616740540792-3daec604777d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Console de Jogos" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Console de Jogos</h3>
+                        <p class="text-gray-600 text-sm mb-2">1TB, 4K, 2 controles</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">R$ 4.499,99</span>
+                            <span class="text-sm text-gray-500">Há 9 dias</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Anúncio 11 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1593642532400-2682810df593?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Notebook Ultrafino" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Notebook Ultrafino</h3>
+                        <p class="text-gray-600 text-sm mb-2">i5, 8GB RAM, 256GB SSD</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">R$ 3.799,99</span>
+                            <span class="text-sm text-gray-500">Há 10 dias</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Anúncio 12 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Bicicleta Elétrica" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Bicicleta Elétrica</h3>
+                        <p class="text-gray-600 text-sm mb-2">Autonomia 50km, 25km/h</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">R$ 5.999,99</span>
+                            <span class="text-sm text-gray-500">Há 11 dias</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition duration-300 inline-flex items-center">
+                    <i class="fas fa-search mr-2"></i> Explorar Mais Anúncios
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Funciona -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Como Funciona o AhnunciaAi 🚀</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-user-plus text-3xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">1. Crie sua conta</h3>
+                    <p class="text-gray-600">Registre-se gratuitamente em menos de 2 minutos</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-camera text-3xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">2. Crie seu anúncio</h3>
+                    <p class="text-gray-600">Adicione fotos, descrição e preço do seu produto</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chart-line text-3xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">3. Impulsione seu anúncio</h3>
+                    <p class="text-gray-600">Escolha um plano para aumentar sua visibilidade</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-handshake text-3xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">4. Venda rapidamente</h3>
+                    <p class="text-gray-600">Receba propostas e feche negócios com segurança</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planos de Anúncio -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Escolha o Plano Ideal para o Seu Negócio 💼</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-bold mb-4">Plano Básico</h3>
+                    <p class="text-4xl font-bold text-blue-600 mb-6">Grátis</p>
+                    <ul class="mb-8 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> 1 anúncio ativo</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Visibilidade padrão</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Suporte por email</li>
+                    </ul>
+                    <a href="#" class="block text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">Começar Agora</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition duration-300 border-2 border-blue-600 transform scale-105">
+                    <h3 class="text-2xl font-bold mb-4">Plano Pro</h3>
+                    <p class="text-4xl font-bold text-blue-600 mb-6">R$29,90<span class="text-sm font-normal">/mês</span></p>
+                    <ul class="mb-8 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> 10 anúncios ativos</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Destaque na busca</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Suporte prioritário</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Estatísticas avançadas</li>
+                    </ul>
+                    <a href="#" class="block text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">Escolher Pro</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-bold mb-4">Plano Premium</h3>
+                    <p class="text-4xl font-bold text-blue-600 mb-6">R$59,90<span class="text-sm font-normal">/mês</span></p>
+                    <ul class="mb-8 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Anúncios ilimitados</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Máxima visibilidade</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Suporte VIP 24/7</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Ferramentas de marketing</li>
+                    </ul>
+                    <a href="#" class="block text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">Escolher Premium</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testemunhos de Usuários -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">O Que Nossos Usuários Dizem 💬</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="flex items-center mb-4">
+                        <img src="https://i.pravatar.cc/60?img=1" alt="Maria S." class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-semibold">Maria S.</h3>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Vendi meu carro em apenas 3 dias! A visibilidade que o AhnunciaAi me proporcionou foi incrível. Recomendo a todos!"</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="flex items-center mb-4">
+                        <img src="https://i.pravatar.cc/60?img=2" alt="João P." class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-semibold">João P.</h3>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Como pequeno empresário, o AhnunciaAi expandiu meu alcance para todo o país. Meus lucros dobraram em apenas dois meses!"</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                    <div class="flex items-center mb-4">
+                        <img src="https://i.pravatar.cc/60?img=3" alt="Ana L." class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h3 class="font-semibold">Ana L.</h3>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"A interface é super intuitiva e o suporte é excelente. Consegui vender itens que estavam parados há meses. AhnunciaAi é fantástico!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call-to-Action Final -->
+    <section class="py-16 bg-blue-600 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Pronto para Impulsionar Suas Vendas? 🚀</h2>
+            <p class="text-xl mb-8">Junte-se a milhares de vendedores de sucesso no AhnunciaAi</p>
+            <a href="#" class="bg-white text-blue-600 px-8 py-3 rounded-md text-lg font-semibold hover:bg-gray-100 transition duration-300 inline-flex items-center">
+                <i class="fas fa-rocket mr-2"></i> Comece a Anunciar Agora
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Sobre o AhnunciaAi</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Quem Somos</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Carreiras</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Imprensa</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Suporte</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Central de Ajuda</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Segurança</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Comunidade</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Termos de Uso</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Política de Privacidade</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Cookies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Siga-nos</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-2xl hover:text-blue-400 transition duration-300"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl hover:text-blue-400 transition duration-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-2xl hover:text-blue-400 transition duration-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-2xl hover:text-blue-400 transition duration-300"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                <p>&copy; 2023 AhnunciaAi - Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation to featured categories
+        const categoryItems = document.querySelectorAll('.group');
+        categoryItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.querySelector('i').classList.add('scale-110');
+            });
+            item.addEventListener('mouseleave', () => {
+                item.querySelector('i').classList.remove('scale-110');
+            });
+        });
+
+        // Lazy loading for images
+        document.addEventListener("DOMContentLoaded", function() {
+            var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+
+            if ("IntersectionObserver" in window) {
+                let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            let lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src;
+                            lazyImage.classList.remove("lazy");
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    });
+                });
+
+                lazyImages.forEach(function(lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
+                });
+            }
+        });
+
+        // Typing effect for search input
+        const searchInput = document.getElementById('searchInput');
+        const placeholderText = "O que você procura?";
+        let i = 0;
+
+        function typeWriter() {
+            if (i < placeholderText.length) {
+                searchInput.setAttribute('placeholder', placeholderText.substring(0, i+1));
+                i++;
+                setTimeout(typeWriter, 100);
+            } else {
+                setTimeout(() => {
+                    i = 0;
+                    searchInput.setAttribute('placeholder', '');
+                    typeWriter();
+                }, 2000);
+            }
+        }
+
+        typeWriter();
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        let lastScrollTop = 0;
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        // Add hover effect to ad cards
+        const adCards = document.querySelectorAll('.card-hover-effect');
+        adCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('shadow-lg', 'scale-105');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('shadow-lg', 'scale-105');
+            });
+        });
+    </script>
+</body>
+</html>
