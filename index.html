@@ -87,18 +87,30 @@
             </div>
             <div class="flex items-center space-x-4">
                 <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Login</a>
-                <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">Anuncie Agora</a>
+                <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    <i class="fas fa-bullhorn mr-2"></i> Anuncie Agora
+                </a>
             </div>
-            <button id="mobileMenuButton" class="md:hidden text-gray-600">
+            <button id="mobileMenuButton" class="md:hidden text-gray-600 w-12 h-12 flex items-center justify-center transition-transform duration-300">
                 <i class="fas fa-bars"></i>
             </button>
         </nav>
-        <div id="mobileMenu" class="hidden md:hidden bg-white p-4 shadow-md">
-            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300">Home</a>
-            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300">Categorias</a>
-            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300">Como Funciona</a>
-            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300">Planos</a>
-            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300">Blog</a>
+        <div id="mobileMenu" class="hidden md:hidden bg-white p-4 shadow-md fixed top-0 right-0 h-full w-64 transform translate-x-full transition-transform duration-300 flex flex-col items-start">
+            <button id="closeMenuButton" class="text-gray-600 hover:text-blue-600 transition duration-300 mb-4">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Home</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Categorias</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Como Funciona</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Planos</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Blog</a>
+
+            <div class="flex space-x-4 mt-4">
+                <a href="#" class="text-2xl text-blue-600 hover:text-blue-400 transition duration-300"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-2xl text-blue-600 hover:text-blue-400 transition duration-300"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-2xl text-blue-600 hover:text-blue-400 transition duration-300"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-2xl text-blue-600 hover:text-blue-400 transition duration-300"><i class="fab fa-linkedin"></i></a>
+            </div>
         </div>
     </header>
 
@@ -297,7 +309,7 @@
                 </div>
                 <!-- Anúncio 4 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 image-zoom card-hover-effect">
-                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Bicicleta" class="w-full h-48 object-cover">
+                    <img src="https://images.unsplash.com/photo-1616486338812-3daec604777d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Bicicleta" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="text-lg font-semibold mb-2">Bicicleta Mountain Bike</h3>
                         <p class="text-gray-600 text-sm mb-2">Aro 29, 21 marchas, Suspensão</p>
@@ -666,12 +678,22 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
+        // Mobile menu toggle com efeito de transição
         const mobileMenuButton = document.getElementById('mobileMenuButton');
         const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenuButton = document.getElementById('closeMenuButton');
 
         mobileMenuButton.addEventListener('click', () => {
+            const isMenuOpen = !mobileMenu.classList.contains('hidden');
             mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('translate-x-full'); // Efeito de abrir da direita para a esquerda
+            mobileMenuButton.innerHTML = isMenuOpen ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>'; // Efeito de X ao clicar
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.add('translate-x-full'); // Efeito de fechar
+            mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>'; // Retorna ao ícone de menu
         });
 
         // Smooth scroll for anchor links
