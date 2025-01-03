@@ -14,7 +14,7 @@ AhnunciaAi é um marketplace inteligente que conecta anunciantes e compradores, 
 Para rodar este projeto localmente, siga os seguintes passos:
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seuusuario/ahnunciaai.git
+   git clone https://github.com/aquinogui/ahnunciaai.git
    ```
 2. Navegue até o diretório do projeto:
    ```bash
