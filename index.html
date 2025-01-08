@@ -71,46 +71,52 @@
     z-index: 2; /* Garante que o conteúdo dentro do elemento fique acima da camada preta */
 }
 
+
+
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
-    <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="header">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-3xl font-bold gradient-text">AhnunciaAi 🚀 </a>
+    <header id="header" class="bg-white shadow-md fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gray-300 h-20">
+        <nav class="container mx-auto px-4 h-full flex justify-between items-center">
+            <a href="#" class="text-xl font-bold gradient-text">AhnunciaAi 🚀</a>
             <div class="hidden md:flex space-x-6">
-                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Home</a>
-                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Categorias</a>
-                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Como Funciona</a>
-                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Planos</a>
-                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Blog</a>
-            </div>
-            <div class="flex items-center space-x-4">
-                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">Login</a>
-                <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                    <i class="fas fa-bullhorn mr-2"></i> Anuncie Agora
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300 relative group">
+                    <i class="fas fa-home mr-1"></i> Home
+                </a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300 relative group">
+                    <i class="fas fa-briefcase mr-1"></i> Plano Profissional
+                </a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300 relative group">
+                    <i class="fas fa-list mr-1"></i> Meus Anúncios
+                </a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300 relative group">
+                    <i class="fas fa-comments mr-1"></i> Chat
+                </a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300 relative group">
+                    <i class="fas fa-bell mr-1"></i> Notificações
                 </a>
             </div>
-            <button id="mobileMenuButton" class="md:hidden text-gray-600 w-12 h-12 flex items-center justify-center transition-transform duration-300">
-                <i class="fas fa-bars"></i>
-            </button>
+            <div class="flex items-center space-x-4">
+                <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 md:text-sm whitespace-nowrap">
+                    <i class="fas fa-bullhorn mr-2"></i> Anuncie Grátis
+                </a>
+                <button id="mobileMenuButton" class="md:hidden text-gray-600 w-12 h-12 flex items-center justify-center transition-transform duration-300">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </nav>
-        <div id="mobileMenu" class="hidden md:hidden bg-white p-4 shadow-md fixed top-0 right-0 h-full w-64 transform translate-x-full transition-transform duration-300 flex flex-col items-start">
+        <div id="mobileMenu" class="hidden lg:hidden bg-white p-4 shadow-md fixed top-0 right-0 h-full w-64 transform translate-x-full transition-transform duration-300 flex flex-col items-start">
             <button id="closeMenuButton" class="text-gray-600 hover:text-blue-600 transition duration-300 mb-4">
                 <i class="fas fa-times text-2xl"></i>
             </button>
             <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Home</a>
-            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Categorias</a>
-            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Como Funciona</a>
-            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Planos</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Plano Profissional</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Meus Anúncios</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Chat</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Notificações</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Login</a>
             <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Blog</a>
-
-            <div class="flex space-x-4 mt-4">
-                <a href="#" class="text-2xl text-blue-600 hover:text-blue-400 transition duration-300"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="text-2xl text-blue-600 hover:text-blue-400 transition duration-300"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-2xl text-blue-600 hover:text-blue-400 transition duration-300"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="text-2xl text-blue-600 hover:text-blue-400 transition duration-300"><i class="fab fa-linkedin"></i></a>
-            </div>
         </div>
     </header>
 
@@ -139,6 +145,11 @@
                                 <option value="casa">🏠 Casa e Decoração</option>
                                 <option value="veiculos">🚗 Veículos</option>
                                 <option value="esportes">⚽ Esportes</option>
+                                <option value="saude">💊 Saúde e Beleza</option>
+                                <option value="brinquedos">🧸 Brinquedos</option>
+                                <option value="ferramentas">🔧 Ferramentas</option>
+                                <option value="livros">📚 Livros</option>
+                                <option value="musica">🎵 Música e Instrumentos</option>
                             </select>
                             <i class="fas fa-chevron-down absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
                         </div>
@@ -210,9 +221,9 @@
                         <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Fones de Ouvido" class="w-full h-48 object-cover">
                         <span class="absolute top-2 left-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">Destaque</span>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Fones de Ouvido Bluetooth</h3>
-                        <p class="text-gray-600 mb-4">Som imersivo e conforto o dia todo. 🎵</p>
+                    <div class="p-6 h-48 flex flex-col">
+                        <h3 class="text-xl font-semibold mb-2 flex-grow">Fones de Ouvido Bluetooth</h3>
+                        <p class="text-gray-600 mb-4 flex-grow">Som imersivo e conforto o dia todo. 🎵</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-blue-600">R$ 199,99</span>
                             <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold transition duration-300">Ver Detalhes</a>
@@ -270,16 +281,16 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-4">Anúncios Recentes 🆕</h2>
             <p class="text-center text-gray-600 mb-12">Confira as últimas novidades em nossa plataforma</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Anúncio 1 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 image-zoom card-hover-effect">
                     <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Notebook" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold mb-2">Notebook Dell XPS</h3>
-                        <p class="text-gray-600 text-sm mb-2">Processador i7, 16GB RAM, 512GB SSD</p>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2 overflow-hidden">Notebook Dell XPS</h3>
+                        <p class="text-gray-600 text-sm mb-2 h-12">Processador i7, 16GB RAM, 512GB SSD</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-blue-600 font-bold">R$ 5.999,99</span>
-                            <span class="text-sm text-gray-500">Há 2 horas</span>
+                            <span class="text-blue-600 font-bold text-lg">R$ 5.999,99</span>
+                            <span class="text-sm text-gray-500 hidden sm:block">Há 2 horas</span>
                         </div>
                     </div>
                 </div>
@@ -288,7 +299,7 @@
                     <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1399&q=80" alt="Smartwatch" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="text-lg font-semibold mb-2">Smartwatch Galaxy Watch</h3>
-                        <p class="text-gray-600 text-sm mb-2">Monitor cardíaco, GPS, 4G</p>
+                        <p class="text-gray-600 text-sm mb-2 h-12">Monitor cardíaco, GPS, 4G</p>
                         <div class="flex justify-between items-center">
                             <span class="text-blue-600 font-bold">R$ 1.799,99</span>
                             <span class="text-sm text-gray-500">Há 3 horas</span>
@@ -300,7 +311,7 @@
                     <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1412&q=80" alt="Tênis" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="text-lg font-semibold mb-2">Tênis Nike Air Max</h3>
-                        <p class="text-gray-600 text-sm mb-2">Tamanho 42, Preto e Branco</p>
+                        <p class="text-gray-600 text-sm mb-2 h-12">Tamanho 42, Preto e Branco</p>
                         <div class="flex justify-between items-center">
                             <span class="text-blue-600 font-bold">R$ 599,99</span>
                             <span class="text-sm text-gray-500">Há 5 horas</span>
@@ -309,10 +320,10 @@
                 </div>
                 <!-- Anúncio 4 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 image-zoom card-hover-effect">
-                    <img src="https://images.unsplash.com/photo-1616486338812-3daec604777d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Bicicleta" class="w-full h-48 object-cover">
+                    <img src="https://media.istockphoto.com/id/168712433/pt/foto/esporte-de-aventura.jpg?s=612x612&w=0&k=20&c=k3QgAgzJiqEhkujQI03PHIOIub2FOfzzfvlecVf_ylM=" alt="Bicicleta" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="text-lg font-semibold mb-2">Bicicleta Mountain Bike</h3>
-                        <p class="text-gray-600 text-sm mb-2">Aro 29, 21 marchas, Suspensão</p>
+                        <p class="text-gray-600 text-sm mb-2 h-12">Aro 29, 21 marchas, Suspensão</p>
                         <div class="flex justify-between items-center">
                             <span class="text-blue-600 font-bold">R$ 1.299,99</span>
                             <span class="text-sm text-gray-500">Há 6 horas</span>
@@ -333,148 +344,148 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-4">Explore Mais Anúncios 🔍</h2>
             <p class="text-center text-gray-600 mb-12">Encontre exatamente o que você procura</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Anúncio 1 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 image-zoom card-hover-effect">
                     <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Fones de Ouvido" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold mb-2">Fones de Ouvido Bluetooth</h3>
-                        <p class="text-gray-600 text-sm mb-2">Cancelamento de ruído, 20h bateria</p>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2 h-12 overflow-hidden">Fones de Ouvido Bluetooth</h3>
+                        <p class="text-gray-600 text-sm mb-2 h-10">Cancelamento de ruído, 20h bateria</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-blue-600 font-bold">R$ 299,99</span>
-                            <span class="text-sm text-gray-500">Há 1 dia</span>
+                            <span class="text-blue-600 font-bold text-lg">R$ 299,99</span>
+                            <span class="text-sm text-gray-500 hidden sm:block">Há 1 dia</span>
                         </div>
                     </div>
                 </div>
                 <!-- Anúncio 2 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 image-zoom card-hover-effect">
                     <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Relógio Inteligente" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold mb-2">Relógio Inteligente Fitness</h3>
-                        <p class="text-gray-600 text-sm mb-2">Monitor cardíaco, GPS, à prova d'água</p>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2 h-12 overflow-hidden">Relógio Inteligente Fitness</h3>
+                        <p class="text-gray-600 text-sm mb-2 h-10">Monitor cardíaco, GPS, à prova d'água</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-blue-600 font-bold">R$ 499,99</span>
-                            <span class="text-sm text-gray-500">Há 2 dias</span>
+                            <span class="text-blue-600 font-bold text-lg">R$ 499,99</span>
+                            <span class="text-sm text-gray-500 hidden sm:block">Há 2 dias</span>
                         </div>
                     </div>
                 </div>
                 <!-- Anúncio 3 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 image-zoom card-hover-effect">
                     <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tênis Esportivo" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold mb-2">Tênis Esportivo Premium</h3>
-                        <p class="text-gray-600 text-sm mb-2">Amortecimento avançado, respirável</p>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2 h-12 overflow-hidden">Tênis Esportivo Premium</h3>
+                        <p class="text-gray-600 text-sm mb-2 h-10">Amortecimento avançado, respirável</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-blue-600 font-bold">R$ 399,99</span>
-                            <span class="text-sm text-gray-500">Há 3 dias</span>
+                            <span class="text-blue-600 font-bold text-lg">R$ 399,99</span>
+                            <span class="text-sm text-gray-500 hidden sm:block">Há 3 dias</span>
                         </div>
                     </div>
                 </div>
                 <!-- Anúncio 4 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 image-zoom card-hover-effect">
                     <img src="https://images.unsplash.com/photo-1504274066651-8d31a536b11a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Câmera DSLR" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold mb-2">Câmera DSLR Profissional</h3>
-                        <p class="text-gray-600 text-sm mb-2">24MP, 4K vídeo, Wi-Fi</p>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2 h-12 overflow-hidden">Câmera DSLR Profissional</h3>
+                        <p class="text-gray-600 text-sm mb-2 h-10">24MP, 4K vídeo, Wi-Fi</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-blue-600 font-bold">R$ 3.999,99</span>
-                            <span class="text-sm text-gray-500">Há 4 dias</span>
+                            <span class="text-blue-600 font-bold text-lg">R$ 3.999,99</span>
+                            <span class="text-sm text-gray-500 hidden sm:block">Há 4 dias</span>
                         </div>
                     </div>
                 </div>
                 <!-- Anúncio 5 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300image-zoom card-hover-effect">
                     <img src="https://images.unsplash.com/photo-1585399000684-d2f72660f092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Smartphone" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold mb-2">Smartphone 5G</h3>
-                        <p class="text-gray-600 text-sm mb-2">6.7" AMOLED, 128GB, 5000mAh</p>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2 h-12 overflow-hidden">Smartphone 5G</h3>
+                        <p class="text-gray-600 text-sm mb-2 h-10">6.7" AMOLED, 128GB, 5000mAh</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-blue-600 font-bold">R$ 2.499,99</span>
-                            <span class="text-sm text-gray-500">Há 5 dias</span>
+                            <span class="text-blue-600 font-bold text-lg">R$ 2.499,99</span>
+                            <span class="text-sm text-gray-500 hidden sm:block">Há 5 dias</span>
                         </div>
                     </div>
                 </div>
                 <!-- Anúncio 6 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 image-zoom card-hover-effect">
                     <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1501&q=80" alt="Laptop Gaming" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold mb-2">Laptop Gaming</h3>
-                        <p class="text-gray-600 text-sm mb-2">RTX 3070, 16GB RAM, 1TB SSD</p>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2 h-12 overflow-hidden">Laptop Gaming</h3>
+                        <p class="text-gray-600 text-sm mb-2 h-10">RTX 3070, 16GB RAM, 1TB SSD</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-blue-600 font-bold">R$ 7.999,99</span>
-                            <span class="text-sm text-gray-500">Há 6 dias</span>
+                            <span class="text-blue-600 font-bold text-lg">R$ 7.999,99</span>
+                            <span class="text-sm text-gray-500 hidden sm:block">Há 6 dias</span>
                         </div>
                     </div>
                 </div>
                 <!-- Anúncio 7 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 image-zoom card-hover-effect">
                     <img src="https://images.unsplash.com/photo-1608156639585-b3a032ef9689?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1498&q=80" alt="Drone" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold mb-2">Drone com Câmera 4K</h3>
-                        <p class="text-gray-600 text-sm mb-2">30min voo, GPS, Follow Me</p>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2 h-12 overflow-hidden">Drone com Câmera 4K</h3>
+                        <p class="text-gray-600 text-sm mb-2 h-10">30min voo, GPS, Follow Me</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-blue-600 font-bold">R$ 3.499,99</span>
-                            <span class="text-sm text-gray-500">Há 1 semana</span>
+                            <span class="text-blue-600 font-bold text-lg">R$ 3.499,99</span>
+                            <span class="text-sm text-gray-500 hidden sm:block">Há 1 semana</span>
                         </div>
                     </div>
                 </div>
                 <!-- Anúncio 8 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 image-zoom card-hover-effect">
                     <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1464&q=80" alt="Smart TV" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold mb-2">Smart TV 4K 55"</h3>
-                        <p class="text-gray-600 text-sm mb-2">HDR, Android TV, Bluetooth</p>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2 h-12 overflow-hidden">Smart TV 4K 55"</h3>
+                        <p class="text-gray-600 text-sm mb-2 h-10">HDR, Android TV, Bluetooth</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-blue-600 font-bold">R$ 2.799,99</span>
-                            <span class="text-sm text-gray-500">Há 1 semana</span>
+                            <span class="text-blue-600 font-bold text-lg">R$ 2.799,99</span>
+                            <span class="text-sm text-gray-500 hidden sm:block">Há 1 semana</span>
                         </div>
                     </div>
                 </div>
                 <!-- Anúncio 9 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 image-zoom card-hover-effect">
                     <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1464&q=80" alt="Tênis Corrida" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold mb-2">Tênis de Corrida</h3>
-                        <p class="text-gray-600 text-sm mb-2">Leve, respirável, amortecimento</p>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2 h-12 overflow-hidden">Tênis de Corrida</h3>
+                        <p class="text-gray-600 text-sm mb-2 h-10">Leve, respirável, amortecimento</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-blue-600 font-bold">R$ 349,99</span>
-                            <span class="text-sm text-gray-500">Há 8 dias</span>
+                            <span class="text-blue-600 font-bold text-lg">R$ 349,99</span>
+                            <span class="text-sm text-gray-500 hidden sm:block">Há 8 dias</span>
                         </div>
                     </div>
                 </div>
                 <!-- Anúncio 10 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 image-zoom card-hover-effect">
                     <img src="https://images.unsplash.com/photo-1616740540792-3daec604777d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Console de Jogos" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold mb-2">Console de Jogos</h3>
-                        <p class="text-gray-600 text-sm mb-2">1TB, 4K, 2 controles</p>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2 h-12 overflow-hidden">Console de Jogos</h3>
+                        <p class="text-gray-600 text-sm mb-2 h-10">1TB, 4K, 2 controles</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-blue-600 font-bold">R$ 4.499,99</span>
-                            <span class="text-sm text-gray-500">Há 9 dias</span>
+                            <span class="text-blue-600 font-bold text-lg">R$ 4.499,99</span>
+                            <span class="text-sm text-gray-500 hidden sm:block">Há 9 dias</span>
                         </div>
                     </div>
                 </div>
                 <!-- Anúncio 11 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 image-zoom card-hover-effect">
                     <img src="https://images.unsplash.com/photo-1593642532400-2682810df593?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Notebook Ultrafino" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold mb-2">Notebook Ultrafino</h3>
-                        <p class="text-gray-600 text-sm mb-2">i5, 8GB RAM, 256GB SSD</p>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2 h-12 overflow-hidden">Notebook Ultrafino</h3>
+                        <p class="text-gray-600 text-sm mb-2 h-10">i5, 8GB RAM, 256GB SSD</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-blue-600 font-bold">R$ 3.799,99</span>
-                            <span class="text-sm text-gray-500">Há 10 dias</span>
+                            <span class="text-blue-600 font-bold text-lg">R$ 3.799,99</span>
+                            <span class="text-sm text-gray-500 hidden sm:block">Há 10 dias</span>
                         </div>
                     </div>
                 </div>
                 <!-- Anúncio 12 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 image-zoom card-hover-effect">
                     <img src="https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Bicicleta Elétrica" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-lg font-semibold mb-2">Bicicleta Elétrica</h3>
-                        <p class="text-gray-600 text-sm mb-2">Autonomia 50km, 25km/h</p>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2 h-12 overflow-hidden">Bicicleta Elétrica</h3>
+                        <p class="text-gray-600 text-sm mb-2 h-10">Autonomia 50km, 25km/h</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-blue-600 font-bold">R$ 5.999,99</span>
-                            <span class="text-sm text-gray-500">Há 11 dias</span>
+                            <span class="text-blue-600 font-bold text-lg">R$ 5.999,99</span>
+                            <span class="text-sm text-gray-500 hidden sm:block">Há 11 dias</span>
                         </div>
                     </div>
                 </div>
@@ -491,7 +502,7 @@
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">Como Funciona o AhnunciaAi 🚀</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="text-center">
                     <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-user-plus text-3xl text-blue-600"></i>
@@ -525,7 +536,7 @@
     </section>
 
     <!-- Planos de Anúncio -->
-    <section class="py-16 bg-gray-100">
+    <section class="py-32 bg-gray-100">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">Escolha o Plano Ideal para o Seu Negócio 💼</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -565,62 +576,7 @@
         </div>
     </section>
 
-    <!-- Testemunhos de Usuários -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">O Que Nossos Usuários Dizem 💬</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
-                    <div class="flex items-center mb-4">
-                        <img src="https://i.pravatar.cc/60?img=1" alt="Maria S." class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h3 class="font-semibold">Maria S.</h3>
-                            <div class="text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">"Vendi meu carro em apenas 3 dias! A visibilidade que o AhnunciaAi me proporcionou foi incrível. Recomendo a todos!"</p>
-                </div>
-                <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
-                    <div class="flex items-center mb-4">
-                        <img src="https://i.pravatar.cc/60?img=2" alt="João P." class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h3 class="font-semibold">João P.</h3>
-                            <div class="text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">"Como pequeno empresário, o AhnunciaAi expandiu meu alcance para todo o país. Meus lucros dobraram em apenas dois meses!"</p>
-                </div>
-                <div class="bg-gray-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
-                    <div class="flex items-center mb-4">
-                        <img src="https://i.pravatar.cc/60?img=3" alt="Ana L." class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h3 class="font-semibold">Ana L.</h3>
-                            <div class="text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">"A interface é super intuitiva e o suporte é excelente. Consegui vender itens que estavam parados há meses. AhnunciaAi é fantástico!"</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- Call-to-Action Final -->
     <section class="py-16 bg-blue-600 text-white">
@@ -676,6 +632,13 @@
             </div>
         </div>
     </footer>
+
+    <style>
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+    </style>
 
     <script>
         // Mobile menu toggle com efeito de transição
@@ -767,9 +730,9 @@
         window.addEventListener('scroll', () => {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             if (scrollTop > lastScrollTop) {
-                header.style.transform = 'translateY(-100%)';
+                header.style.transform = 'translateY(-100%)'; // Esconde o cabeçalho ao rolar para baixo
             } else {
-                header.style.transform = 'translateY(0)';
+                header.style.transform = 'translateY(0)'; // Mostra o cabeçalho ao rolar para cima
             }
             lastScrollTop = scrollTop;
         });
@@ -784,6 +747,32 @@
                 card.classList.remove('shadow-lg', 'scale-105');
             });
         });
+
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-item');
+            const totalSlides = slides.length;
+
+            if (index >= totalSlides) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = totalSlides - 1;
+            } else {
+                currentSlide = index;
+            }
+
+            const offset = -currentSlide * 100;
+            document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
     </script>
 </body>
 </html>
