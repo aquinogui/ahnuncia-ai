@@ -79,6 +79,12 @@
     
 }
 
+#mobileMenu {
+    background-color: white; /* Garante que o fundo do menu seja sempre branco */
+    opacity: 1; /* Garante que a opacidade do menu seja sempre 1 */
+    z-index: 1000; /* Garante que o menu fique acima de outros elementos */
+}
+
     </style>
 </head>
 <body class="bg-gray-50">
@@ -112,7 +118,7 @@
                 </button>
             </div>
         </nav>
-        <div id="mobileMenu" class="hidden lg:hidden bg-white p-4 shadow-md fixed top-0 right-0 h-full w-64 transform translate-x-full transition-transform duration-300 flex flex-col items-start">
+        <div id="mobileMenu" class="hidden lg:hidden bg-white p-4 shadow-md fixed top-0 right-0 h-full w-64 transform translate-x-full transition-transform duration-300 flex flex-col items-start z-index: 1000;">
             <button id="closeMenuButton" class="text-gray-600 hover:text-blue-600 transition duration-300 mb-4">
                 <i class="fas fa-times text-2xl"></i>
             </button>
@@ -221,10 +227,10 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-4">Anúncios em Destaque 🌟</h2>
             <p class="text-center text-gray-600 mb-12">Os melhores produtos de nossos anunciantes premium</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-3 gap-8">
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 card-hover-effect">
                     <div class="relative image-zoom">
-                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Fones de Ouvido" class="w-full h-48 object-cover">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Fones de Ouvido" class="w-full h-64 object-cover">
                         <span class="absolute top-2 left-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">Destaque</span>
                     </div>
                     <div class="p-6 h-48 flex flex-col">
@@ -238,7 +244,7 @@
                 </div>
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 card-hover-effect">
                     <div class="relative image-zoom">
-                        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Relógio Inteligente" class="w-full h-48 object-cover">
+                        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Relógio Inteligente" class="w-full h-64 object-cover">
                         <span class="absolute top-2 left-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">Destaque</span>
                     </div>
                     <div class="p-6">
@@ -252,7 +258,7 @@
                 </div>
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 card-hover-effect">
                     <div class="relative image-zoom">
-                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tênis Esportivo" class="w-full h-48 object-cover">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tênis Esportivo" class="w-full h-64 object-cover">
                         <span class="absolute top-2 left-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">Destaque</span>
                     </div>
                     <div class="p-6">
@@ -266,7 +272,7 @@
                 </div>
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 card-hover-effect">
                     <div class="relative image-zoom">
-                        <img src="https://images.unsplash.com/photo-1504274066651-8d31a536b11a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Câmera DSLR" class="w-full h-48 object-cover">
+                        <img src="https://images.unsplash.com/photo-1504274066651-8d31a536b11a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Câmera DSLR" class="w-full h-64 object-cover">
                         <span class="absolute top-2 left-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">Destaque</span>
                     </div>
                     <div class="p-6">
@@ -274,6 +280,34 @@
                         <p class="text-gray-600 mb-4">Capture momentos com qualidade excepcional. 📸</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold text-blue-600">R$ 3.999,99</span>
+                            <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold transition duration-300">Ver Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 card-hover-effect">
+                    <div class="relative image-zoom">
+                        <img src="https://images.unsplash.com/photo-1585399000684-d2f72660f092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Smartphone" class="w-full h-64 object-cover">
+                        <span class="absolute top-2 left-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">Destaque</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Smartphone 5G</h3>
+                        <p class="text-gray-600 mb-4">6.7" AMOLED, 128GB, 5000mAh.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-blue-600">R$ 2.499,99</span>
+                            <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold transition duration-300">Ver Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 card-hover-effect">
+                    <div class="relative image-zoom">
+                        <img src="https://images.unsplash.com/photo-1616740540792-3daec604777d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Console de Jogos" class="w-full h-64 object-cover">
+                        <span class="absolute top-2 left-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">Destaque</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Console de Jogos</h3>
+                        <p class="text-gray-600 mb-4">1TB, 4K, 2 controles.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-blue-600">R$ 4.499,99</span>
                             <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold transition duration-300">Ver Detalhes</a>
                         </div>
                     </div>
@@ -545,8 +579,9 @@
     <section class="py-32 bg-gray-100">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">Escolha o Plano Ideal para o Seu Negócio 💼</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Plano Básico -->
+                <div class="bg-white rounded-lg shadow-lg p-8 transition-transform transform hover:-translate-y-1 hover:shadow-xl relative overflow-hidden">
                     <h3 class="text-2xl font-bold mb-4">Plano Básico</h3>
                     <p class="text-4xl font-bold text-blue-600 mb-6">Grátis</p>
                     <ul class="mb-8 space-y-2">
@@ -555,8 +590,10 @@
                         <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Suporte por email</li>
                     </ul>
                     <a href="#" class="block text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">Começar Agora</a>
+                    <div class="absolute inset-0 border-4 border-transparent rounded-lg transition-all duration-300 hover:border-gradient hover:animate-border"></div>
                 </div>
-                <div class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition duration-300 border-2 border-blue-600 transform scale-105">
+                <!-- Plano Pro -->
+                <div class="bg-white rounded-lg shadow-lg p-8 transition-transform transform hover:-translate-y-1 hover:shadow-xl relative overflow-hidden border-2 border-blue-600">
                     <h3 class="text-2xl font-bold mb-4">Plano Pro</h3>
                     <p class="text-4xl font-bold text-blue-600 mb-6">R$29,90<span class="text-sm font-normal">/mês</span></p>
                     <ul class="mb-8 space-y-2">
@@ -566,8 +603,10 @@
                         <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Estatísticas avançadas</li>
                     </ul>
                     <a href="#" class="block text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">Escolher Pro</a>
+                    <div class="absolute inset-0 border-4 border-transparent rounded-lg transition-all duration-300 hover:border-gradient hover:animate-border"></div>
                 </div>
-                <div class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
+                <!-- Plano Premium -->
+                <div class="bg-white rounded-lg shadow-lg p-8 transition-transform transform hover:-translate-y-1 hover:shadow-xl relative overflow-hidden">
                     <h3 class="text-2xl font-bold mb-4">Plano Premium</h3>
                     <p class="text-4xl font-bold text-blue-600 mb-6">R$59,90<span class="text-sm font-normal">/mês</span></p>
                     <ul class="mb-8 space-y-2">
@@ -577,6 +616,7 @@
                         <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Ferramentas de marketing</li>
                     </ul>
                     <a href="#" class="block text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">Escolher Premium</a>
+                    <div class="absolute inset-0 border-4 border-transparent rounded-lg transition-all duration-300 hover:border-gradient hover:animate-border"></div>
                 </div>
             </div>
         </div>
@@ -643,6 +683,26 @@
         .carousel-inner {
             display: flex;
             transition: transform 0.5s ease;
+        }
+
+        @keyframes border-animation {
+            0% {
+                border-color: transparent;
+            }
+            50% {
+                border-color: rgba(0, 123, 255, 0.5);
+            }
+            100% {
+                border-color: transparent;
+            }
+        }
+
+        .hover\:border-gradient:hover {
+            border-image: linear-gradient(45deg, #4f46e5, #3b82f6) 1;
+        }
+
+        .hover\:animate-border:hover {
+            animation: border-animation 1s infinite;
         }
     </style>
 
@@ -779,6 +839,14 @@
         function prevSlide() {
             showSlide(currentSlide - 1);
         }
+
+        window.addEventLisatener('scroll', () => {
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.style.opacity = '1'; // Garante que a opacidade do menu seja sempre 1 ao rolar
+                mobileMenu.style.backgroundColor = 'white'; // Garante que o fundo do menu seja sempre branco
+            }
+        });
     </script>
 </body>
 </html>
