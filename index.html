@@ -118,18 +118,48 @@
                 </button>
             </div>
         </nav>
-        <div id="mobileMenu" class="hidden lg:hidden bg-white p-4 shadow-md fixed top-0 right-0 h-full w-64 transform translate-x-full transition-transform duration-300 flex flex-col items-start z-index: 1000;">
-            <button id="closeMenuButton" class="text-gray-600 hover:text-blue-600 transition duration-300 mb-4">
-                <i class="fas fa-times text-2xl"></i>
-            </button>
-            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Home</a>
-            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Plano Profissional</a>
-            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Meus Anúncios</a>
-            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Chat</a>
-            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Notificações</a>
-            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Login</a>
-            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600 transition duration-300 border-b border-gray-300 w-full text-left">Blog</a>
+        <div id="mobileMenu" class="hidden lg:hidden fixed top-0 right-0 h-full w-72 transform translate-x-full transition-all duration-300 ease-in-out bg-white border-l border-gray-200 z-50">
+            <div class="flex flex-col h-full">
+                <div class="p-4 border-b border-gray-100">
+                    <button id="closeMenuButton" class="p-2 rounded-lg text-gray-500 hover:text-gray-700 hover:bg-gray-50 transition-all duration-300">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <nav class="flex-1 overflow-y-auto p-4">
+                    <div class="space-y-2">
+                        <a href="#" class="flex items-center p-3 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-all duration-200">
+                            <i class="fas fa-home w-5 text-gray-500"></i>
+                            <span class="ml-3">Home</span>
+                        </a>
+                        <a href="#" class="flex items-center p-3 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-all duration-200">
+                            <i class="fas fa-briefcase w-5 text-gray-500"></i>
+                            <span class="ml-3">Plano Profissional</span>
+                        </a>
+                        <a href="#" class="flex items-center p-3 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-all duration-200">
+                            <i class="fas fa-list w-5 text-gray-500"></i>
+                            <span class="ml-3">Meus Anúncios</span>
+                        </a>
+                        <a href="#" class="flex items-center p-3 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-all duration-200">
+                            <i class="fas fa-comments w-5 text-gray-500"></i>
+                            <span class="ml-3">Chat</span>
+                        </a>
+                        <a href="#" class="flex items-center p-3 rounded-lg text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition-all duration-200">
+                            <i class="fas fa-bell w-5 text-gray-500"></i>
+                            <span class="ml-3">Notificações</span>
+                        </a>
+                    </div>
+                </nav>
+                
+                <div class="p-4 border-t border-gray-100">
+                    <a href="#" class="flex items-center justify-center p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200">
+                        <i class="fas fa-user-plus mr-2"></i>
+                        <span>Login / Cadastro</span>
+                    </a>
+                </div>
+            </div>
         </div>
+        <div id="menuOverlay" class="hidden fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-40 transition-opacity duration-300"></div>
     </header>
 
     <!-- Hero Section with Search -->
@@ -674,7 +704,7 @@
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-gray-700 text-center">
-                <p>&copy; 2023 AhnunciaAi - Todos os direitos reservados.</p>
+                <p>&copy; 2025 AhnunciaAi - Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
@@ -707,22 +737,90 @@
     </style>
 
     <script>
-        // Mobile menu toggle com efeito de transição
         const mobileMenuButton = document.getElementById('mobileMenuButton');
         const mobileMenu = document.getElementById('mobileMenu');
         const closeMenuButton = document.getElementById('closeMenuButton');
+        const menuOverlay = document.getElementById('menuOverlay');
+        let lastScrollTop = 0;
+        let isMenuOpen = false;
 
-        mobileMenuButton.addEventListener('click', () => {
-            const isMenuOpen = !mobileMenu.classList.contains('hidden');
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('translate-x-full'); // Efeito de abrir da direita para a esquerda
-            mobileMenuButton.innerHTML = isMenuOpen ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>'; // Efeito de X ao clicar
+        function openMenu() {
+            isMenuOpen = true;
+            mobileMenu.style.backgroundColor = 'white';
+            mobileMenu.style.opacity = '1';
+            menuOverlay.classList.remove('hidden');
+            mobileMenu.classList.remove('hidden');
+            
+            // Pequeno delay para garantir que a transição funcione
+            requestAnimationFrame(() => {
+                menuOverlay.classList.add('opacity-100');
+                mobileMenu.classList.remove('translate-x-full');
+            });
+            
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            if (!isMenuOpen) return;
+            
+            isMenuOpen = false;
+            menuOverlay.classList.remove('opacity-100');
+            mobileMenu.classList.add('translate-x-full');
+            
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+                menuOverlay.classList.add('hidden');
+            }, 300);
+            
+            document.body.style.overflow = '';
+        }
+
+        // Event Listeners
+        mobileMenuButton.addEventListener('click', openMenu);
+        closeMenuButton.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+
+        // Fechar menu ao rolar (com debounce)
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (scrollTimeout) {
+                clearTimeout(scrollTimeout);
+            }
+            
+            scrollTimeout = setTimeout(() => {
+                if (isMenuOpen) {
+                    closeMenu();
+                }
+            }, 50);
         });
 
-        closeMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            mobileMenu.classList.add('translate-x-full'); // Efeito de fechar
-            mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>'; // Retorna ao ícone de menu
+        // Fechar menu ao redimensionar
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024) {
+                closeMenu();
+            }
+        });
+
+        // Garantir que o menu mantenha o estilo correto
+        window.addEventListener('scroll', () => {
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.style.backgroundColor = 'white';
+                mobileMenu.style.opacity = '1';
+            }
+        });
+
+        // Prevenir scroll quando menu está aberto
+        document.addEventListener('touchmove', (e) => {
+            if (isMenuOpen) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // Adicionar escape key para fechar o menu
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isMenuOpen) {
+                closeMenu();
+            }
         });
 
         // Smooth scroll for anchor links
@@ -791,7 +889,7 @@
 
         // Header scroll effect
         const header = document.getElementById('header');
-        let lastScrollTop = 0;
+        lastScrollTop = 0;
 
         window.addEventListener('scroll', () => {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -846,6 +944,20 @@
                 mobileMenu.style.opacity = '1'; // Garante que a opacidade do menu seja sempre 1 ao rolar
                 mobileMenu.style.backgroundColor = 'white'; // Garante que o fundo do menu seja sempre branco
             }
+        });
+
+        window.addEventListener('scroll', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu.classList.contains('translate-x-0')) {
+                mobileMenu.classList.add('translate-x-full');
+            }
+        });
+
+        // Animação ao abrir o menu
+        document.getElementById('openMenuButton').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.remove('translate-x-full');
+            mobileMenu.classList.add('translate-x-0');
         });
     </script>
 </body>
